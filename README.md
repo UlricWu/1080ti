@@ -8,6 +8,10 @@ load_multiple_csv.ipynb is read multiple datasets in a folder for one time and r
 
 #dataset is used for testing
 
+#
+##Forecast_Bitcoin_Price.Rmd is a project to forecast the price of Bitcoin
+
+
 #machine learning algorithms
 
 #machine_learning_linear is a collection of linear regression
