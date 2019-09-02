@@ -6,7 +6,8 @@ process is a pre-process term that is used for an ununiform dataset, in order to
 #
 load_multiple_csv.ipynb is read multiple datasets in a folder for one time and randomly split into train &test
 
-#dataset is used for testing
+#BWGHT.csv is a dataset used for testing
+#
 
 #
 ##Forecast_Bitcoin_Price.Rmd is a project to forecast the price of Bitcoin
