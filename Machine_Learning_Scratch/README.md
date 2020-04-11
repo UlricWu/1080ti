@@ -1,4 +1,4 @@
-Code Machine Learning Algorithms from Scratch
+Code Machine Learning Algorithms from Scratch with numpy and scipy
 
 Algorithms including prediction and inference
 
