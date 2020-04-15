@@ -1,7 +1,9 @@
 # records my way to Data related fiels, including statistis, time series, modelling and programming as much as I can.
 
 ## It contains solutions to data structures and algorithms in LeetCode(to do list),
-##                          Machine Learning Algorithms and its coding(to do list)
+##                          Machine Learning Algorithms from Scratch with only Numpy and comparison with Sklearn
+##                         (Linear Regression including Least Square, Gradient Descent, Ridge)
+##       (Classification Regression including Logistic Regression, Quadratic discriminant analysis, Linear discriminant analysis)
 ##                          Python scripts of Data Engineering(to do list),
 ##                          Projects that relates to all above(to do list),
 ##
