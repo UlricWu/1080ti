@@ -14,3 +14,6 @@
   clean data like /n, /t
 # 5. gradebook
   a UDF function to replace NA with the mean/median of the row or column by R
+
+# 5. Naive Bayes
+   different variations of the Naive Bayes (NB) classifier with pre-processing in Python
