@@ -12,3 +12,5 @@
   load multiple data sets in the same location
 # 4. pre-process data
   clean data like /n, /t
+# 5. gradebook
+  a UDF function to replace NA with the mean/median of the row or column by R
