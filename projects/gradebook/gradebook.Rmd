@@ -1,0 +1,204 @@
+---
+title: "gradebook"
+author: "Ulric"
+date: "7/8/2020"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+
+
+```{r a}
+
+
+#runif()  uniform distribution with min=5, max=10) 
+#rnorm() normal distribution with mean = , sd =
+set.seed(205142357)
+
+count <- 150
+
+name <- c('UID', 'Homework_1', 'Homework_2','Homework_3','Homework_4','Homework_5','Homework_6','Homework_7','Homework_8','Homework_9','Homework_10','Exam_1','Exam_2', 'Exam_3', 'Section')
+
+
+df <- data.frame(replicate(15,sample(1:100, count,rep=TRUE)))
+colnames(df) <- name
+
+start <- 123456781
+end <- start+count-1
+df$UID <- c(start:end)
+
+sec <- sample(0:1, count, replace=T,prob=c(8/15,7/15))
+sec[sec == 0] <- 'A'
+sec[sec == 1] <- 'B'
+df$Section <- sec
+
+#View(df)
+gradebook <-  df
+print(gradebook)
+
+```
+
+```{r b}
+set.seed(205142357)
+
+random <- 0.1*count
+
+hw_10 <- c(sample(1:nrow(gradebook), random, replace = FALSE))
+em_3 <- c(sample(1:nrow(gradebook), random, replace = FALSE))
+
+gradebook$Homework_10[hw_10] <- NA
+gradebook$Exam_3[em_3] <- NA
+
+##
+
+a <- gradebook[which(gradebook$Section == 'A'),]
+b <- gradebook[which(gradebook$Section != 'A'),]
+rownames(a) <- 1:nrow(a)
+rownames(b) <- 1:nrow(b)
+
+
+## studnet 1, sectioni a & hw_10 na
+index <- c()
+
+condition1 <- which(is.na(a$Exam_3) == TRUE)
+index1 <- sample(condition1, 1, replace=FALSE)
+
+
+condition2 <- which(is.na(a$Homework_10) == TRUE)
+index2 <- sample(condition2,1, replace=FALSE)
+
+condition3 <- as.integer(rownames(na.exclude(a)))
+index3 <- sample(condition3,1, replace=FALSE)
+
+##sec_b
+condition4 <- which(is.na(b$Exam_3) == TRUE)
+
+index4 <- sample(condition4,1, replace=FALSE)
+
+condition5 <- which(is.na(b$Homework_10) == TRUE)
+index5 <- sample(condition5,1, replace=FALSE)
+
+condition6 <- as.integer(rownames(na.exclude(b)))
+
+index6 <-sample(condition6,1, replace=FALSE)
+
+
+
+student <- rbind(a[c(index1,index2,index3),], b[c(index4,index5,index6),])
+
+row.names(student) <- c()
+#View(student)
+print(student)
+
+```
+
+```{r  c}
+
+
+source('205142357.R')
+
+##pseudo code
+# call function:
+# 	if margin == row:
+# 		get na.index
+# 		loop na.index
+# 			get column names of na.index
+# 			impute the missing value in row
+# 	if margin == col:
+# 		get the na column name
+# 		impute the missing value in column
+# 
+# 	return (dateframe)
+
+```
+
+```{r  d}
+a <- student[which(student$Section == 'A'),]
+b <- student[which(student$Section != 'A'),]
+rownames(a) <- 1:nrow(a)
+rownames(b) <- 1:nrow(b)
+a_mean<- messy_impute(a, 'mean', 2)
+a_median<- messy_impute(a, 'median', 2)
+
+b_mean <- messy_impute(b, 'mean', 2)
+b_median <- messy_impute(b, 'median', 2)
+
+
+print(a_mean)
+print(a_median)
+print(b_mean)
+print(b_median)
+```
+
+
+```{r  e}
+student_mean <- messy_impute(student, 'mean', 1)
+student_median <- messy_impute(student, 'median', 1)
+
+print(student_mean)
+print(student_median)
+```
+
+
+```{r   f}
+
+
+library(tidyr)
+
+
+gradebook_tidy <- gradebook %>% gather(Assignment_Type, Grade, Homework_1:Exam_3,  na.rm = FALSE)
+
+print(gradebook_tidy)
+
+```
+
+
+```{r   g}
+source('205142357.R')
+
+## pseudo code
+# call function:
+# 	if margin == row
+# 		get na.index
+# 		loop na.index
+# 			get column names of na.index
+# 			impute the missing value in row
+# 	if margin == col
+# 		get the na column name
+# 		impute the missing value in column
+# 
+# 	return as_tibble(dateframe)
+
+```
+
+```{r  h}
+
+
+
+a_mean_tidy <- tidy_impute(a, 'mean', 2)
+a_median_tidy <- tidy_impute(a, 'median', 2)
+
+b_mean_tidy <- tidy_impute(b, 'mean', 2)
+b_median_tidy <- tidy_impute(b, 'median', 2)
+
+print(a_mean_tidy)
+print(a_median_tidy)
+print(b_mean_tidy)
+print(b_median_tidy)
+```
+
+```{r i}
+
+
+
+student_mean_tidy <- tidy_impute(student, 'mean', 1)
+student_median_tidy <- tidy_impute(student, 'median', 1)
+
+
+print(student_mean_tidy )
+print(student_median_tidy )
+
+```
+
+
