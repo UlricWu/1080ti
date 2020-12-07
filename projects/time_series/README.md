@@ -1,13 +1,11 @@
 
 
-Additionally, during training, the log would show some information about the iteration, loglikehood and so on. I jsut wonder how to set the max number of ierations and the threshold at the begining of the calling the model.
-
 
 # Performance comparison between Monthly Data and Daily Data
 
 **Bug Report** Why Monthly Data with more trining time compared to Day Data?
 
-**Feature Request**Additionally, during training, the log would show some information about the iteration, loglikehood and so on. I jsut wonder how to set the max number of ierations and the threshold at the begining of the calling the model.
+**Feature Request** during training, the log would show some information about the iteration, loglikehood and so on. I jsut wonder how to <u>set the max number of ierations and the threshold </u>at the begining of the calling the model.
 
 `Prophet` [source code](https://github.com/facebook/prophet)
 `example.csv` The dataset has three columns, including 'ds', 'y_x', 'y_y'. 'ds' means the date, while 'y_x' and 'y_y' are the value that we are intesested in. Due to the Confidentiality Agreement, those value features are converted already with the same performance and the same issue I mentioned.
